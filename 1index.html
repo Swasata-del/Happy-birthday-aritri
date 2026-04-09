@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday 1 day choto bon !</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      text-align: center;
+      color: #fff;
+    }
+    .container {
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+    h1 {
+      font-size: 2em;
+      animation: fadeIn 2s ease-in-out;
+    }
+    p {
+      font-size: 1.2em;
+    }
+    .cake {
+      font-size: 70px;
+      margin: 20px 0;
+    }
+    button {
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      background: #ff6f91;
+      color: white;
+      cursor: pointer;
+      width: 80%;
+      max-width: 250px;
+      margin: 10px auto;
+      display: block;
+    }
+    button:hover {
+      background: #ff3e6c;
+    }
+    #gameArea {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      margin-top: 20px;
+      border: 2px dashed white;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    .letter {
+      margin-top: 30px;
+      background: rgba(255,255,255,0.2);
+      padding: 15px;
+      border-radius: 15px;
+      font-size: 1em;
+      line-height: 1.5em;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>🎉 Happy Birthday, Princess choto bon / Aritri! 🎉</h1>
+    <div class="cake">🎂</div>
+    <p>Wishing you a day filled with love, joy, and lots of cake! 💖</p>
+    <p>You are a great person i hope you stay like this✨</p>
+    
+    <button onclick="showMessage()">Click for a Surprise 🎁</button>
+    <p id="message"></p>
+
+    <div class="letter">
+      <h2>💌 A Letter For You 💌</h2>
+      <p>
+        Dear Aritri Happiest birthday,<br><br>
+        Today is all about you 🎉 I hope your day is filled with laughter, happiness, and beautiful moments.
+        You are kind, amazing, and bring so much joy to everyone around you. 💖<br><br>
+        May all your dreams come true and may your smile always shine as bright as today. ✨
+        Never forget how special you are.<br><br>
+        Happy Birthday once again from a brother🎂💝<br><br>
+        Enjoy your day i hope everything will be fine so again <br><br>
+        Happy Birthday ❤️<br>
+        Be Happy
+      </p>
+    </div>
+
+    <div style="margin-top:30px;">
+      <h2>🎮 A little game from a Brother 🎮</h2>
+      <p>Tap the hearts as fast as you can 💖</p>
+      <button onclick="startGame()">Start Game</button>
+      <h3>Score: <span id="score">0</span></h3>
+      <div id="gameArea"></div>
+    </div>
+  </div>
+
+  <script>
+    function showMessage() {
+      document.getElementById("message").innerHTML = "💝Thank you for being there for me and i will be there for you💝 ";
+    }
+
+    let score = 0;
+    let gameInterval;
+
+    function startGame() {
+      score = 0;
+      document.getElementById("score").innerText = score;
+      const area = document.getElementById("gameArea");
+      area.innerHTML = "";
+
+      clearInterval(gameInterval);
+      gameInterval = setInterval(createHeart, 800);
+
+      setTimeout(() => {
+        clearInterval(gameInterval);
+        alert("Game Over! Your score: " + score);
+      }, 10000);
+    }
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.innerHTML = "💖";
+      heart.style.position = "absolute";
+      heart.style.fontSize = "28px";
+      heart.style.cursor = "pointer";
+
+      const x = Math.random() * 90;
+      const y = Math.random() * 160;
+
+      heart.style.left = x + "%";
+      heart.style.top = y + "px";
+
+      heart.onclick = function() {
+        score++;
+        document.getElementById("score").innerText = score;
+        heart.remove();
+      };
+
+      document.getElementById("gameArea").appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 2000);
+    }
+  </script>
+
+</body>
+</html>
